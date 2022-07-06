@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Case Converter</title>
+</head>
+<body>
+    <div class="title"><h1>Case Converter</h1></div>
+    <textarea></textarea>
+    <div>
+        <button id="lower-case"><b>Lower Case</b></button>
+        <button id="upper-case"><b>Upper Case</b></button>
+        <button id="proper-case"><b>Proper Case</b></button>
+        <button id="sentence-case"><b>Sentence Case</b></button>
+        <button id="save-text-file"><b>Save Text File</b></button>
+    </div>
+<script>
+    let text = document.querySelector("textarea");
+
+    /* Convert text into upper-case */
+    document.getElementById("upper-case").addEventListener("click", function (){
+        text.value = text.value.toUpperCase();
+    });
+
+    /* Convert text into lower-case */
+    document.getElementById("lower-case").addEventListener("click", function (){
+        text.value = text.value.toLowerCase();
+    });
+
+    /* Convert text into proper-case */
+    document.getElementById("proper-case").addEventListener("click", function (){
+        text.value = text.value.split(" ").map(v => v[0].toUpperCase() + v.substring(1).toLowerCase()).join(" ");
+    });
+
+    /* Convert text into sentence-case */
+    document.getElementById("sentence-case").addEventListener("click", function (){
+        text.value = text.value.split(". ").map(v => v[0].toUpperCase() + v.substring(1).toLowerCase()).join(". ");
+    });
+    document.getElementById("save-text-file").addEventListener("click", function(){
+        function download(filename, text) {
+            let element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        };
+        download("text.txt",text.value);
+    });
+
+</script>
+</body>
+</html>

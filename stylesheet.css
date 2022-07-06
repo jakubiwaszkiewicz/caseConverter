@@ -1,0 +1,36 @@
+body{
+    margin:1vw 3vw;
+    font-family:Arial;
+}
+
+#flex-container{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+
+}
+h1{
+    margin:0vw;
+    font-size:5vw;
+}
+
+button{
+    background-color: #cb5959;
+    padding:0px;
+    min-width:10vw;
+    margin:1vw 0.75vw 0.5vw 0vw;
+    cursor: pointer;
+    text-decoration: none;
+    font-size:1vw;
+}
+
+button:hover {
+    background-color: #a13636;
+    color: darkgrey;
+}
+
+textarea{
+    font-size: 2vw;
+    min-width:70vw;
+    min-height:35vw;
+}
